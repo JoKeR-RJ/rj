@@ -1,7 +1,8 @@
 import { Component, inject, Injectable, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { CommonService } from './shared/services/common.service';
+import { Router, RouterOutlet } from '@angular/router';
 import { BehaviorSubject, Subject, take, tap } from 'rxjs';
+import { UnicastService } from './shared/services/unicast.service';
+import { MulticastService } from './shared/services/multicast.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,24 +12,41 @@ import { BehaviorSubject, Subject, take, tap } from 'rxjs';
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit{
-  title = 'esempi-robert';
+
+  private _rt=inject(Router)
+
+moveTo() {
+this._rt.navigate(['/main']);
+}
 
   data:any;
-  private _useCommonService= inject(CommonService)
 
-  subject$ = new Subject();
-  behaviorSubject$ = new BehaviorSubject<any>('valore originale');
+  private _useUnicastService= inject(UnicastService)
+  private _useMulticastService= inject(MulticastService)
+
+
+
+ 
 
   ngOnInit(): void {
-    this.subscription()
-    this.behaviorSubject$.next('dgdfgdfgdghrsthshtrsyh')
 
-    this.subject$.next('subject')
+    // this.behaviorSubject$.next('sono la BEHAVIOR')
+
+    // console.log(this.behaviorSubject$.value);
+
+
+    // this.subject$.subscribe(value => {
+    //   console.log('Valore della subject:', value);
+    // });
+
+    // this.subject$.next('subject')
+
+ 
+    
   }
 
-
-  subscription(){
-    this._useCommonService.getDataFromUrl().pipe(
+  unicastSubscription(){
+    this._useUnicastService.getDataFromUrl().pipe(
       take(1),
       tap( (store) => {
         this.data=store
@@ -36,4 +54,6 @@ export class AppComponent implements OnInit{
       })
     ).subscribe()
   }
+
+
 }

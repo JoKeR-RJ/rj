@@ -6,16 +6,12 @@ import { ICommon } from '../interfaces/common.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class CommonService {
+export class UnicastService {
 
-  //----------------------------------------------------------------------------
   constructor(private _http:HttpClient) { }
 
   getDataFromUrl():Observable<ICommon>{
     return this._http.get<ICommon>('https://jsonplaceholder.typicode.com/posts');
   }
-  //----------------------------------------------------------------------------
-
-
 
 }

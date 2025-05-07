@@ -1,5 +1,6 @@
 import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
-import { AppComponent } from '../../../app.component';
+import { MulticastService } from '../../../../shared/services/multicast.service';
+import { UnicastService } from '../../../../shared/services/unicast.service';
 
 @Component({
   selector: 'app-child',
@@ -13,29 +14,20 @@ import { AppComponent } from '../../../app.component';
 })
 export class ChildComponent implements OnInit {
 
-
-  private a=inject(AppComponent)
-
   b:any;
 
   @Input() in='';
-
   @Output() out = new EventEmitter<string>();
 
+  private _useUnicastService= inject(UnicastService)
+  private _useMulticastService= inject(MulticastService)
+
   ngOnInit(): void {
-    this.a.subject$.subscribe({
-      next: (ciao)=>{
-        this.b= ciao;
-        console.log('sono la BEHAVIOR SUBJECT',ciao);
-        
-      }
-    });
+    
   }
 
   childToParent(){
     this.out.emit('ciao dal fihlio');
   }
-
-
 
 }

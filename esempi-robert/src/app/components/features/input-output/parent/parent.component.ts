@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { ChildComponent } from "../child/child.component";
+
 import { CommonModule } from '@angular/common';
+import { ChildComponent } from "../child/child.component";
+
 
 @Component({
   selector: 'app-parent',
-  imports: [ChildComponent,CommonModule],
+  imports: [CommonModule, ChildComponent],
   template: `
 
   <app-child [in]="msg" (out)="receiveChild($event)"></app-child>
