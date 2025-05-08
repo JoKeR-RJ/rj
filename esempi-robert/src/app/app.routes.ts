@@ -4,6 +4,7 @@ import { ChildComponent } from './components/features/input-output/child/child.c
 import { ParentComponent } from './components/features/input-output/parent/parent.component';
 import { UnicastComponent } from './components/features/unicast/unicast.component';
 import { MulticastComponent } from './components/features/multicast/multicast.component';
+import { ProvaComponent } from './components/features/prova/prova.component';
 
 export const routes: Routes = [
     {path:'', component:MainComponent , pathMatch:'full'}, 
@@ -13,5 +14,7 @@ export const routes: Routes = [
 
     {path:'unicast', component:UnicastComponent },
     {path:'multicast', component:MulticastComponent },
+    {path:'prova', component:ProvaComponent },
+
 
 ];

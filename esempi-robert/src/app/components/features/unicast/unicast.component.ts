@@ -1,7 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { take, tap } from 'rxjs';
-import { MulticastService } from '../../../shared/services/multicast.service';
 import { UnicastService } from '../../../shared/services/unicast.service';
 
 @Component({

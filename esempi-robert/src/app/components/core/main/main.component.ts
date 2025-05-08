@@ -15,6 +15,7 @@ import { MyMethodsService } from "../../../shared/services/my-methods.service";
   <button (click)="moveTo('/parent')">vai a INPUT & OUTPUT </button>
   <button (click)="moveTo('/unicast')">vai a UNICAST </button>
   <button (click)="moveTo('/multicast')">vai a MULTICAST </button>
+  <button (click)="moveTo('/prova')">vai a PROVA </button>
 `
 })
 export class MainComponent implements OnInit{

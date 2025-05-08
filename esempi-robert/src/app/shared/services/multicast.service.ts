@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, BehaviorSubject, of } from 'rxjs';
+import { Subject, BehaviorSubject, of, ReplaySubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,12 +7,16 @@ import { Subject, BehaviorSubject, of } from 'rxjs';
 export class MulticastService {
 
   constructor() { }
-
+  n:any;
   subject$ = new Subject();
-  behaviorSubject$ = new BehaviorSubject<any>('valore originale del bs');
+  behaviorSubject$ = new BehaviorSubject<any>('VALORE ORIGINALE del BS');
+
+  replaySubject$= new ReplaySubject(50);
+
+  
 
   emitSubject$(){
-    of(3,7,9).subscribe(val => console.log(val) )
+    this.n= of(3,7,9).subscribe(val => console.log(val) );
     
     this.subject$.subscribe(
       (value) => {
